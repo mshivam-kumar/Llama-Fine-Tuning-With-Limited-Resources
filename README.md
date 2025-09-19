@@ -35,7 +35,7 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto",
 )
 model = prepare_model_for_kbit_training(model) # Prepares model for kbit training
-
+```
 ### 4. LoRA Configuration
 Low-Rank Adaptation (LoRA) was applied to the model to enable parameter-efficient fine-tuning. This technique updates only a small fraction of the model's parameters, drastically reducing training costs and memory usage while maintaining performance.
 lora_config = LoraConfig(
