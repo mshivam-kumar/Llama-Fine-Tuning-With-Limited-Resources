@@ -38,6 +38,7 @@ model = prepare_model_for_kbit_training(model) # Prepares model for kbit trainin
 ```
 ### 4. LoRA Configuration
 Low-Rank Adaptation (LoRA) was applied to the model to enable parameter-efficient fine-tuning. This technique updates only a small fraction of the model's parameters, drastically reducing training costs and memory usage while maintaining performance.
+```python
 lora_config = LoraConfig(
     r=8,  # rank dimension
     lora_alpha=32,  # parameter for scaling
@@ -49,6 +50,7 @@ lora_config = LoraConfig(
 model = get_peft_model(model, lora_config)
 print(f"Trainable parameters: {model.print_trainable_parameters()}")
 # Output: trainable params: 1,703,936 || all params: 1,237,518,336 || trainable%: 0.1377
+```
 
 This configuration resulted in approximately 1.7 Million trainable parameters, representing only ~0.14% of the total model parameters.
 
